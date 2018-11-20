@@ -10,6 +10,14 @@
 <body>
 	<div id="app">
 		<h1 v-once> {{ title }}</h1>
+		<p>Please type your name</p>
+
+		<input type="text" ref="nameInput" v-on:input="changeName" v-bind:placeholder="placeholderName"></input>
+
+		<p> {{name}}</p>
+
+
+
 		<input type="text" v-on:input="changeGreeting"></input>
 		<p>{{ greeting }} - <a v-bind:href="link"> Insta </a> </p>
 		<h3>{{ showGreeting()}}</h3>
@@ -25,20 +33,40 @@
 				greeting: 'Hello World!',
 				link: 'https://www.instagram.com/',
 				title: 'Vue Practice',
-				finishedLink: "<a href='https://www.facebook.com'> Facebook </a>"
+				finishedLink: "<a href='https://www.facebook.com'> Facebook </a>",
+				placeholderName: "nameless",
+				name: ""
 			},
 			methods: {
 				changeGreeting: function(event) {
-					this.greeting = event .target.value;
+					this.greeting = event.target.value;
+					// this.title = event .target.value;
+				},
+				changeName: function(event) {
+					this.name = event.target.value;
 					// this.title = event .target.value;
 				},
 				showGreeting: function(){
 					//this.title = 'CHANGED?'
 					return this.greeting
 				}
+//				submitName: function(event){
+//					this.name = event.target.value
+//				}
 
 			}
 		})
 	</script>
 </body>
 </html>
+
+
+//fill <p> with name and age using interpolation
+	//output age multipied by three <p> AGE * 3 </p>
+//Generate a random number between one and 100 (random float)
+// search any image on google and output it here by binding the src attr
+//
+
+
+
+//v-on:click="submitName"
