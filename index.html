@@ -10,14 +10,18 @@
 <body>
 	<div id="app">
 		<h1 v-once> {{ title }}</h1>
-		<p>Please type your name</p>
-
+		<hr>
+		<p>Please type your name and age</p>
 		<input type="text" ref="nameInput" v-on:input="changeName" v-bind:placeholder="placeholderName"></input>
+		<input type="text" ref="ageInput" v-on:input="changeAge" v-bind:placeholder="placeholderAge"></input>
+		<p> {{name}} - {{age}} </p>
+		<hr>
 
-		<p> {{name}}</p>
+		<h2>Random Number</h2>
+		<p>{{generateRandomNumber()}}</p>
 
 
-
+		<hr>
 		<input type="text" v-on:input="changeGreeting"></input>
 		<p>{{ greeting }} - <a v-bind:href="link"> Insta </a> </p>
 		<h3>{{ showGreeting()}}</h3>
@@ -34,8 +38,11 @@
 				link: 'https://www.instagram.com/',
 				title: 'Vue Practice',
 				finishedLink: "<a href='https://www.facebook.com'> Facebook </a>",
-				placeholderName: "nameless",
-				name: ""
+				placeholderName: "name",
+				placeholderAge: "age",
+				name: "",
+				age:"",
+				randomNumber:""
 			},
 			methods: {
 				changeGreeting: function(event) {
@@ -46,9 +53,18 @@
 					this.name = event.target.value;
 					// this.title = event .target.value;
 				},
+				changeAge: function(event) {
+					var age = event.target.value;
+					this.age = age * 3
+					// this.title = event .target.value;
+				},
 				showGreeting: function(){
 					//this.title = 'CHANGED?'
 					return this.greeting
+				},
+				generateRandomNumber: function(){
+					var random = this.randomNumber = Math.floor(Math.random() * 100)
+					return random
 				}
 //				submitName: function(event){
 //					this.name = event.target.value
@@ -63,7 +79,7 @@
 
 //fill <p> with name and age using interpolation
 	//output age multipied by three <p> AGE * 3 </p>
-//Generate a random number between one and 100 (random float)
+// Generate a random number between one and 100 (random float)
 // search any image on google and output it here by binding the src attr
 //
 
